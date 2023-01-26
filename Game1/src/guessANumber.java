@@ -7,10 +7,12 @@ public class guessANumber {
         Random randomNumber = new Random();
         int computerRandom = randomNumber.nextInt(100);
         int playerNumber = 0;
+        int counter=0;
 
         while (computerRandom != playerNumber) {
             System.out.print("Guess s number (1-100): ");
             String playerInput = scanner.nextLine();
+            counter++;
             boolean isValid = true;
             for (int i = 0; i < playerInput.length(); i++) {
                 if (playerInput.charAt(i) < 48 || playerInput.charAt(i) > 57) {
@@ -20,7 +22,7 @@ public class guessANumber {
             if (isValid) {
                 playerNumber = Integer.parseInt(playerInput);
                 if (playerNumber == computerRandom) {
-                    System.out.println("You guess it!");
+                    System.out.printf("You guessed it from %d time!",counter);
                     break;
                 } else if (playerNumber < computerRandom  && playerNumber>0) {
                     System.out.println("Too Low");
